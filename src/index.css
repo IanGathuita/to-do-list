@@ -1,13 +1,184 @@
-body {
+/* 
+Colors: #091034 #0A2299 #183BF0 #798EF6 #DDE3FD
+ */
+*{
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,body{
+  max-width: 100vw;
+}
+#root, .App{
+  max-width: 100%;
+}
+body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  max-width: 100%;
+}
+div{
+  max-width: 100%;
+}
+p{
+  font-size: 20px;
+  line-height: 32px;
+  color:#091034;
+}
+h3{
+  font-size: 20px;
+  line-height: 32px;
+}
+h2{
+  font-size: 24px;
+  line-height: 38px;
+  color: #0A2299;  
+}
+h1{
+  font-size: 32px;
+  line-height: 52px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+header{
+  padding: 16px;
+  margin-bottom: 16px;
+  background-color: #0A2299;
+  color: white;
+  position: sticky;
+  top:0;
+  max-width: 100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+a{
+  color:white;
+  text-decoration:none;
+  cursor:pointer;
+}
+.links a{
+  margin-right:16px;
+}
+.links a:last-child{
+  margin-right:0;
+}
+
+.container{
+  /* border: 1px solid red; */
+  margin: 0 16px;
+  padding:16px 0;
+}
+div .container{
+  padding-top:0;
+  padding-bottom:0;
+}
+.dueDate{
+  color:#4d4d4d;
+}
+.card{
+  background-color: #DDE3FD;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  padding:8px;
+}
+button{
+  padding: 16px 8px;
+  border-radius: 8px;
+  font-weight: bold;
+  background-color: #DDE3FD;
+  color: #0A2299;
+  border: 2px solid #0A2299;
+  cursor: pointer;
+  
+  
+}
+form{
+  max-width: 100%;
+  margin-top: 16px;
+}
+form button{
+  max-width: 100%;
+  min-width: 100%;
+}
+label{
+  font-size: 20px;
+  line-height: 32px;
+  margin-bottom: 4px;
+}
+input{
+  position: static;
+  min-width: 100%;
+  max-width: 100%;
+  padding: 16px 8px;
+  border:1px solid black;
+  
+  border-radius: 8px;
+}
+.error{
+  margin-bottom: 8px;
+  color:red;
+}
+form button{
+  margin-top:16px
+}
+.actions{
+  display: flex;
+  justify-content: space-between;
+}
+.actions span{
+  max-width: 40%;
+  min-width: auto;
+  margin: 8px 8px 8px 0;
+  cursor: pointer;
+  color:blue;
+  font-size:28px
+}
+
+.card .input{
+  display:none;
+}
+
+input[type='submit']{
+  margin-top:8px;
+  margin-bottom: 8px;
+  background-color:#0A2299;
+  color:white;
+  border:none;
+  cursor: pointer;
+}
+
+
+@media only screen and (min-width:768px){
+  .container{
+    margin: 0 220px;
+  }
+  .card{
+    margin-bottom: 8px;
+    border-radius: 8px;
+    padding:8px;
+  }
+  header{
+    padding: 16px 220px;
+  }
+  div+button{
+    margin:0 220px;
+    
+  }
+  
+  .actions{
+    max-width: 100%;
+    display:flex;
+    justify-content: flex-start;
+  }
+  
+  .actions span{
+    max-width: 40%;
+    min-width: 5%;
+    margin: 8px 8px 8px 0;
+  }
+  
 }
