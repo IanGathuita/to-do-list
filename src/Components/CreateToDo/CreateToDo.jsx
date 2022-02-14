@@ -1,14 +1,18 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-export default function CreateToDo(props){
+import { useDispatch } from "react-redux";
+import { todosAction } from "../../Redux/Actions/todosAction";
+import { useSelector } from "react-redux";
+export default function CreateToDo(){
 
-    const addToDo = props.addToDo;
-    const  toDoItems = props.toDoItems;
+    
 
     const [name,setName] = useState('');
     const [description,setDescription] = useState('');
     const [dueDate,setDueDate] = useState('');
     let history = useHistory();
+    const dispatch = useDispatch();
+    const toDoItems = useSelector(state => state.toDos);
 
     
 
@@ -48,10 +52,26 @@ export default function CreateToDo(props){
 
                 <button onClick={(e) => {
                     e.preventDefault();
+                    let lastId;
+                    console.log(toDoItems);
+
+                    if(toDoItems.length > 0){
+                    lastId = toDoItems[toDoItems.length - 1].id;
+                    }
+                    else{
+                    lastId = 0;
+                    }
+                    let id = ++lastId;
                     // checkInput(name,description,dueDate);
-                    let newToDo = {name,description,dueDate};
-                    addToDo(newToDo);
-                    // console.log(toDoItems);
+                    let newToDo = {id,name,description,dueDate};
+
+
+                    //deleted props: addToDo and toDoItems
+                    /*addToDo(newToDo);*/
+                    /*console.log(toDoItems);*/
+                    dispatch(todosAction(newToDo));
+                    console.log(toDoItems);
+                    console.log()
                     history.push("/");
                     
                 }}>SUBMIT</button>

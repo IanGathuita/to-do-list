@@ -1,6 +1,14 @@
-export default function ToDoItem(props){
-    const toDoItems = props.toDoItems;
-    const deleteToDo = props.deleteToDo;
+import store from "../../Redux/store";
+import { useSelector,useDispatch } from "react-redux";
+import { deleteTodo } from "../../Redux/Actions/todosAction";
+
+export default function ToDoItem(){
+    // const toDoItems = props.toDoItems;
+    // const deleteToDo = props.deleteToDo;
+
+    //A hook to access the redux store's state.
+    const toDoItems = useSelector(state => state.toDos);
+    const dispatch = useDispatch();
 
     function editToDo(){
         console.log("clicked edit");
@@ -18,14 +26,22 @@ export default function ToDoItem(props){
         actions.style.display = 'none';
         submit.style.display = 'block';
     }
+    function markAsComplete(completeId){
+        //If element is loaded
+        if(document.getElementById(completeId)){
+            document.getElementById(completeId).style.backgroundColor = '#ff6666';
+        }
+    }
 
 
      return toDoItems.length > 0 ?    
         <>
             {
                 toDoItems.map((toDo) => {
+                    let completeId = `" # ${toDo.id} "`;
+                    console.log(completeId);
                     return(
-                        <div className ='container card' key={toDo.id}>
+                        <div className ='container card {to}' key={toDo.id} id={toDo.id}>
                             <h2 id="name" >{toDo.id}. {toDo.name}</h2>
                             <input id="name-input" className="input" type="text" placeholder="New heading" ></input>
                             <p id="description">{toDo.description}</p>
@@ -35,8 +51,10 @@ export default function ToDoItem(props){
                             <input id="submit" className="input"  type="submit"></input>
                             <div className="actions">
                                 <span title="edit to do" className="material-icons-outlined edit" onClick={() => {editToDo()}}>edit</span>
-                                <span title="mark as complete" className="material-icons-outlined complete">task_alt</span>
-                                <span title="delete to do" className="material-icons-outlined delete" onClick={()=>{deleteToDo(toDo.id);console.log('deleted')}}>delete_outline</span>
+                                
+                                <span title="mark as complete" className="material-icons-outlined complete" onClick={() => {markAsComplete(toDo.id)}}>task_alt</span>
+                                <span title="delete to do" className="material-icons-outlined delete" onClick={()=> {dispatch(deleteTodo(toDo.id))}} >delete_outline</span> 
+                                {/* onClick={()=>{deleteToDo(toDo.id);console.log('deleted')}} */}
                             </div>                            
                         </div>
                     )

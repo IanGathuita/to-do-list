@@ -3,14 +3,13 @@ import ToDoItem from "../ToDoItem/ToDoItem";
 
 import React from "react";
 
-export default function ToDoList(props){
+export default function ToDoList(){
 
-const deleteToDo = props.deleteToDo;
-const toDoItems = props.toDoItems;  
+
     
 return(
     <div>            
-        <ToDoItem toDoItems={toDoItems} deleteToDo={deleteToDo} />
+        <ToDoItem/>
     </div>
 );   
 }
