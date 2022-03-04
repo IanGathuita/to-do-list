@@ -1,4 +1,4 @@
-import {ADD_TODO,DELETE_TODO} from "../types";
+import {ADD_TODO,DELETE_TODO,EDIT_TODO} from "../types";
 export const todosAction = (todo) => {
     return(
         {
@@ -15,3 +15,12 @@ export const deleteTodo = (id) => {
       payload: id,
     };
   };
+
+  export function editToDo(payload){
+    return {
+      type:EDIT_TODO,
+      id:payload.id,
+      property: payload.property,
+      newValue: payload.newValue
+    }
+}

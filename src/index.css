@@ -19,6 +19,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   max-width: 100%;
+  
 }
 div{
   max-width: 100%;
@@ -149,6 +150,46 @@ input[type='submit']{
   color:white;
   border:none;
   cursor: pointer;
+}
+span h2{
+  display: inline-block;
+}
+.card span{
+  white-space: pre;
+}
+
+.pagination-btns{
+  
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+  max-width: 100%;
+  height: auto;
+}
+
+
+.pagination-btns a{
+  color: blue;
+  padding: 8px;
+  margin: 8px;  
+  border-radius: 4px;
+  cursor: pointer;
+  height: auto;
+  display: inline-block;
+  vertical-align: middle;
+  border: 1px solid blue;
+}
+.pagination-disabled a{
+  border: none;
+  background-color: gray;
+  cursor:unset;
+  color: white;
+}
+.pagination-active a{
+  border: 1px solid blue;
+  background-color: #DDE3FD ;
+
 }
 
 
